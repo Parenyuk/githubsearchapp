@@ -1,5 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import './SearchInput.scss';
+import {useSelector} from 'react-redux';
+import {AppStateType} from '../../redux/store';
 
 type PropsType = {
     searchValue: string
@@ -8,6 +10,8 @@ type PropsType = {
 }
 
 export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue, dispatchThunk}) => {
+
+    const error = useSelector<AppStateType, null | string>(state => state.searchRepositoriesPage?.setError)
 
     const changeSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.currentTarget.value)
@@ -22,6 +26,7 @@ export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue, d
     return (
         <div >
         <input value={searchValue}  onChange={changeSearchValue} className={'searchInput'}  onKeyPress={onKeyPress}  />
+            {/*{error && <div>{error}</div>}*/}
         </div>
     )
 }

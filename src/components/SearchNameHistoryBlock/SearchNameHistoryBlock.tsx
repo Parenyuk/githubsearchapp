@@ -9,13 +9,12 @@ export const SearchNameHistoryBlock = () => {
 
     const searchHistory = arraySearchValue
         ?.slice(-5)
-        .map((name: string) => {
-      return  <div>{name}</div>
+        .map((name: string, id) => {
+      return  <div key={id}>{name}</div>
     } )
 
     return (
         <>
-
             <div className={'searchHistoryTitle'}>Search history:</div>
             <div className={'arraySearchValue'}>
                 {searchHistory}

@@ -1,0 +1,13 @@
+$BG_Color: #3A4047;
+
+.card {
+  border: 1px solid $BG_Color;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 400px;
+  margin: 20px;
+}
+.title {
+  font-weight: bold;
+}

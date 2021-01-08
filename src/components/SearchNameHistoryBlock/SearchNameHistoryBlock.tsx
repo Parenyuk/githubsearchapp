@@ -15,6 +15,7 @@ export const SearchNameHistoryBlock = () => {
 
     return (
         <>
+
             <div className={'searchHistoryTitle'}>Search history:</div>
             <div className={'arraySearchValue'}>
                 {searchHistory}

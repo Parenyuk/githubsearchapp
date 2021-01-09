@@ -2,18 +2,22 @@ $BG_Color: #3A4047;
 
 .app {
   background-color: $BG_Color;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
-  width: 80%;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
-.rightTitle {
-  color: white;
+.mainSection {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  padding-top: 10px;
 }
 

@@ -8,10 +8,9 @@ export const SearchNameHistoryBlock = () => {
     const arraySearchValue = useSelector<AppStateType, Array<string>>(state => state.searchRepositoriesPage.arraySearchValue)
 
     const searchHistory = arraySearchValue
-        ?.slice(-5)
         .map((name: string, id) => {
-      return  <div key={id}>{name}</div>
-    } )
+            return <div key={id}>{name}</div>
+        })
 
     return (
         <>

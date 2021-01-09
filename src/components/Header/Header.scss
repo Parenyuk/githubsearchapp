@@ -1,0 +1,17 @@
+$Line_Color: grey;
+.header {
+  display: grid;
+  grid-template-columns: 1fr 250px;
+  grid-column-gap: 60vw;
+  padding-top: 2vh;
+}
+
+.section-line {
+  border-bottom: 1px solid rgba(89, 86, 86, 0.9);
+  max-width: 81.5vw;
+}
+
+.rightTitle {
+  color: white;
+}
+

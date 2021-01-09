@@ -1,4 +1,3 @@
-
 export type GithubResponseDataType = Array<ResponseDataType>
 
 export type ResponseDataType = {

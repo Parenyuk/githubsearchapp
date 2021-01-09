@@ -5,18 +5,20 @@ import {GithubResponseDataType, ResponseDataType} from '../../services/types';
 import {Card} from '../Card/Card';
 
 
-export const CardList  = () => {
+export const CardList = () => {
 
-    const repositoriesDataArray = useSelector<AppStateType, GithubResponseDataType>(state => state.searchRepositoriesPage.repositoriesDataArray)
+    const repositoriesDataArray = useSelector<AppStateType, GithubResponseDataType>(state =>
+        state.searchRepositoriesPage.repositoriesDataArray)
 
-
-    const repositoriesArray = repositoriesDataArray?.map( (item: ResponseDataType, id) => {
-            return <Card id={item.id} name={item.name} language={item.language} description={item.description}  />
+    const repositoriesArray = repositoriesDataArray?.map((item: ResponseDataType ) => {
+            return (
+                <Card key={item.id} name={item.name} language={item.language} description={item.description}/>
+                )
         }
     )
 
     return (
-        <div className={'cardList'} >
+        <div className={'cardList'}>
             {repositoriesArray}
         </div>
     )

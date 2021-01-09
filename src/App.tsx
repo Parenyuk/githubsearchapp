@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
-import logo from './assets/images/logo.png'
 import './App.scss';
 import {SearchInput} from './components/SearchInput/SearchInput';
 import {useDispatch} from 'react-redux';
 import {searchRepositoriesHistoryTC, searchRepositoriesTC} from './redux/SearchRepositoriesReducer';
 import {CardList} from './components/CardList/CardList';
 import {SearchNameHistoryBlock} from './components/SearchNameHistoryBlock/SearchNameHistoryBlock';
+import {Header} from './components/Header/Header';
 
 export const App = () => {
 
     const [searchValue, setSearchValue] = useState<string>('')
-
 
     const dispatch = useDispatch();
 
@@ -20,18 +19,18 @@ export const App = () => {
     }
 
     return (
-        <div className="app">
+        <div className='app'>
             <div className='container'>
-                <img src={logo} alt={'#'} width={150} height={50}/>
-                <div className={'rightTitle'}>
-                    Github users search app
+                <Header/>
+                <div className='mainSection'>
+                    <div>
+                        <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}
+                                     dispatchThunk={dispatchThunk}/>
+                        <SearchNameHistoryBlock/>
+                    </div>
+                    <CardList/>
                 </div>
             </div>
-            <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} dispatchThunk={dispatchThunk}/>
-            <div>
-                <SearchNameHistoryBlock/>
-            </div>
-            <CardList/>
         </div>
     );
 }

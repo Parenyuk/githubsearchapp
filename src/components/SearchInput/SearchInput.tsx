@@ -12,12 +12,10 @@ type PropsType = {
 
 export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue, dispatchThunk}) => {
 
-
-
     const error = useSelector<AppStateType, null | string>(state => state.searchRepositoriesPage?.setError)
 
     const changeSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.currentTarget.value)
+            setSearchValue(e.currentTarget.value)
     }
 
     const delayedQuery = useCallback(debounce(dispatchThunk, 1500), [searchValue]);
@@ -30,7 +28,8 @@ export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue, d
     return (
         <div>
             <input value={searchValue} onChange={changeSearchValue} className={'searchInput'}  />
-            {error && <div className={'error'}>{error}</div>}
+            {/*{error && <div className={'error'}>{error}</div>*/}
+            { error ? <div className={'error'}>{error}</div> : ' '  }
         </div>
     )
 }

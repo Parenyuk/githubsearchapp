@@ -3,7 +3,6 @@ import {ThunkAction, ThunkDispatch} from 'redux-thunk';
 import {githubApi} from '../api/api';
 import {GithubResponseDataType} from '../services/types';
 
-
 const SET_SEARCH_REPOSITORIES = 'SEARCH_REPOSITORIES_REDUCER/SET_SEARCH_REPOSITORIES';
 const SET_HISTORY_SEARCH_REPOSITORIES = 'SEARCH_REPOSITORIES_REDUCER/SET_HISTORY_SEARCH_REPOSITORIES';
 const SET_ERROR = 'SEARCH_REPOSITORIES_REDUCER/SET_ERROR'
@@ -22,7 +21,8 @@ export const searchRepositoriesReducer = (state = initialState, action: ActionTy
             return {...state, repositoriesDataArray: action.repositoriesDataArray}
         case SET_HISTORY_SEARCH_REPOSITORIES: {
             return {
-                ...state, arraySearchValue: [...state.arraySearchValue.slice(-4), action.searchValue + ' ']}
+                ...state, arraySearchValue: [...state.arraySearchValue.slice(-4), action.searchValue + ' ']
+            }
         }
         case SET_ERROR: {
             return {...state, setError: action.errorMessage}
@@ -48,6 +48,7 @@ export const actions = {
 }
 
 export const searchRepositoriesTC = (searchValue: string): ThunkType => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionType>) => {
+    dispatch(actions.searchRepositoriesHistoryAC(searchValue))
     try {
         const response = await githubApi.setSearchRepositories(searchValue);
         dispatch(actions.searchRepositoriesAC(response.data))
@@ -65,12 +66,5 @@ export const searchRepositoriesTC = (searchValue: string): ThunkType => async (d
     }
 }
 
-export const searchRepositoriesHistoryTC = (searchValue: string): ThunkType =>
-    async (dispatch) => {
-    try {
-        dispatch(actions.searchRepositoriesHistoryAC(searchValue))
-    } catch (e) {
-        throw new Error(e)
-    }
-}
+
 

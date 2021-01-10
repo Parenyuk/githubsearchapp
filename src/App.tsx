@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.scss';
 import {SearchInput} from './components/SearchInput/SearchInput';
 import {useDispatch} from 'react-redux';
-import {searchRepositoriesHistoryTC, searchRepositoriesTC} from './redux/SearchRepositoriesReducer';
+import {searchRepositoriesTC} from './redux/SearchRepositoriesReducer';
 import {CardList} from './components/CardList/CardList';
 import {SearchNameHistoryBlock} from './components/SearchNameHistoryBlock/SearchNameHistoryBlock';
 import {Header} from './components/Header/Header';
@@ -14,8 +14,10 @@ export const App = () => {
     const dispatch = useDispatch();
 
     const dispatchThunk = () => {
-        dispatch(searchRepositoriesTC(searchValue))
-        dispatch(searchRepositoriesHistoryTC(searchValue))
+        if (searchValue !== '') {
+            dispatch(searchRepositoriesTC(searchValue))
+
+        }
     }
 
     return (

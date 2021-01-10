@@ -4,7 +4,6 @@ import {AppStateType} from '../../redux/store';
 import {GithubResponseDataType, ResponseDataType} from '../../services/types';
 import {Card} from '../Card/Card';
 
-
 export const CardList = () => {
 
     const repositoriesDataArray = useSelector<AppStateType, GithubResponseDataType>(state =>

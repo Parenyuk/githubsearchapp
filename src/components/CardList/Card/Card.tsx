@@ -1,5 +1,5 @@
 import React from 'react';
-import './../CardList/CardList.scss'
+import '../CardList.scss'
 
 type PropsType = {
     name: string

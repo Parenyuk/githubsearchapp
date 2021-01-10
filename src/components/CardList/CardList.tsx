@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
 import {GithubResponseDataType, ResponseDataType} from '../../services/types';
-import {Card} from '../Card/Card';
+import {Card} from './Card/Card';
 
 export const CardList = () => {
 

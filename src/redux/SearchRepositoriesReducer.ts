@@ -23,6 +23,9 @@ export const searchRepositoriesReducer = (state = initialState, action: ActionTy
             return {
                 ...state, arraySearchValue: [...state.arraySearchValue.slice(-4), action.searchValue + ' ']
             }
+            // return {
+            //     ...state, arraySearchValue: [...state.arraySearchValue, action.searchValue + ' ']
+            // }
         }
         case SET_ERROR: {
             return {...state, setError: action.errorMessage}
@@ -50,16 +53,21 @@ export const actions = {
 export const searchRepositoriesTC = (searchValue: string): ThunkType => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionType>) => {
     dispatch(actions.searchRepositoriesHistoryAC(searchValue))
     try {
-        const response = await githubApi.setSearchRepositories(searchValue);
-        dispatch(actions.searchRepositoriesAC(response.data))
-        dispatch(actions.setError(null))
+        if (searchValue) {
+            const response = await githubApi.setSearchRepositories(searchValue);
+            dispatch(actions.searchRepositoriesAC(response.data))
+            dispatch(actions.setError(null))
+        }
+        else {
+            dispatch(actions.setError(null))
+        }
     } catch (e) {
         let statusCode = e.response?.status
 
         if (statusCode === 403) {
             dispatch(actions.setError('error'))
         } else if ((statusCode === 401) || (statusCode === 404)) {
-            dispatch(actions.setError('user not found'))
+            dispatch(actions.setError('Sorry, no matches.'))
         } else {
             dispatch(actions.setError('some error'))
         }

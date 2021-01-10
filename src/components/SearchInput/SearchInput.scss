@@ -10,3 +10,19 @@
 .error {
   color: red;
 }
+@media screen and (max-width: 1500px) {
+  .searchInput {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .searchInput {
+    width: 120px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .searchInput {
+
+    width: 75vw;
+  }
+}

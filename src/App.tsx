@@ -14,10 +14,8 @@ export const App = () => {
     const dispatch = useDispatch();
 
     const dispatchThunk = () => {
-        if (searchValue !== '') {
-            dispatch(searchRepositoriesTC(searchValue))
+        dispatch(searchRepositoriesTC(searchValue))
 
-        }
     }
 
     return (

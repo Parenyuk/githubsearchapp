@@ -9,3 +9,12 @@
   color: white;
   padding: 15px 0px;
 }
+
+@media screen and (max-width: 640px) {
+  .searchHistoryTitle {
+    padding-left: 15px;
+  }
+  .arraySearchValue {
+   padding-left: 15px;
+  }
+}

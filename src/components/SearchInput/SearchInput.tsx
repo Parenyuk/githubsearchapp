@@ -2,7 +2,8 @@ import React, {ChangeEvent, useCallback, useEffect} from 'react';
 import './SearchInput.scss';
 import {useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
-import debounce from "lodash.debounce";
+import {useDebounce} from 'use-lodash-debounce';
+import _debounce from "lodash.debounce";
 
 type PropsType = {
     searchValue: string
@@ -18,17 +19,34 @@ export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue, d
             setSearchValue(e.currentTarget.value)
     }
 
-    const delayedQuery = useCallback(debounce(dispatchThunk, 1500), [searchValue]);
+    const debouncedValue = useDebounce(searchValue, 1500)
 
-    useEffect(() => {
-        delayedQuery();
+
+    // useEffect(() => {
+    //     dispatchThunk();
+    //   return () => {
+    //       dispatchThunk();
+    //   }
+    //
+    // }, [debouncedValue]);
+
+
+   // second variant to use debaunce
+    const delayedQuery = useCallback(_debounce(dispatchThunk, 500), [searchValue]);
+
+
+
+     useEffect(() => {
+         if (searchValue) {
+             delayedQuery();
+         }
         return delayedQuery.cancel;
-    }, [searchValue, delayedQuery]);
+
+     }, [searchValue, delayedQuery]);
 
     return (
         <div>
             <input value={searchValue} onChange={changeSearchValue} className={'searchInput'}  />
-            {/*{error && <div className={'error'}>{error}</div>*/}
             { error ? <div className={'error'}>{error}</div> : ' '  }
         </div>
     )

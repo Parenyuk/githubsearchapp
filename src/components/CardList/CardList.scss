@@ -3,7 +3,7 @@ $BG_Color: #3A4047;
 
 .cardList {
   display: grid;
-  grid-template-columns: 500px 500px;
+  grid-template-columns: 30vw 30vw;
   background-color: $BG_Color;
 }
 
@@ -12,9 +12,21 @@ $BG_Color: #3A4047;
   background-color: white;
   border-radius: 10px;
   padding: 10px;
-  max-width: 500px;
+  max-width: 30vw;
   margin: 10px;
 }
 .title {
   font-weight: bold;
+}
+
+
+@media screen and (max-width: 640px) {
+  .cardList {
+    grid-template-columns: 80vw;
+  }
+  .card {
+
+    max-width: 80vw;
+
+  }
 }

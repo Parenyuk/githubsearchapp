@@ -19,5 +19,11 @@ $BG_Color: #3A4047;
   display: grid;
   grid-template-columns: 20% 80%;
   padding-top: 10px;
+  width: 80vw;
 }
 
+@media screen and (max-width: 640px) {
+  .mainSection {
+    grid-template-columns: 100%;
+  }
+}

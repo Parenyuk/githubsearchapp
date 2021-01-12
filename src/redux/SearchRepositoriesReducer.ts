@@ -23,9 +23,6 @@ export const searchRepositoriesReducer = (state = initialState, action: ActionTy
             return {
                 ...state, arraySearchValue: [...state.arraySearchValue.slice(-4), action.searchValue + ' ']
             }
-            // return {
-            //     ...state, arraySearchValue: [...state.arraySearchValue, action.searchValue + ' ']
-            // }
         }
         case SET_ERROR: {
             return {...state, setError: action.errorMessage}

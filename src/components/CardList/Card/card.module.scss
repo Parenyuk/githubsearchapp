@@ -1,13 +1,14 @@
-$BG_Color: #3A4047;
+@import "src/common/styles/styles";
 
 .card {
   border: 1px solid $BG_Color;
   background-color: white;
   border-radius: 10px;
   padding: 10px;
-  max-width: 600px;
+ // max-width: 600px;
   margin: 20px;
+  .title {
+    font-weight: bold;
+  }
 }
-.title {
-  font-weight: bold;
-}
+

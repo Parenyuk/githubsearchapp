@@ -1,7 +1,8 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+import {loadState, saveState} from '../common/utils/localStorage';
 import {searchRepositoriesReducer} from './SearchRepositoriesReducer';
-import {loadState, saveState} from '../common/utils/LocalStorage';
+
 
 
 
@@ -16,9 +17,6 @@ const rootReducer = combineReducers(
 export type RootReducerType = typeof rootReducer;
 
 export type AppStateType = ReturnType<RootReducerType>;
-
-// export const store = createStore(rootReducer, applyMiddleware(thunk));
-
 
 const persistedState = loadState();
 export const store = createStore(

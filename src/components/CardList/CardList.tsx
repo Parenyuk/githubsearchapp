@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
 import {GithubResponseDataType, ResponseDataType} from '../../services/types';
 import {Card} from './Card/Card';
+import s from './cardList.module.scss'
 
 export const CardList = () => {
 
@@ -17,7 +18,7 @@ export const CardList = () => {
     )
 
     return (
-        <div className={'cardList'}>
+        <div className={s.cardList}>
             {repositoriesArray}
         </div>
     )

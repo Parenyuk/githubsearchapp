@@ -1,17 +1,16 @@
-import React, {ChangeEvent, useCallback, useEffect} from 'react';
-import './SearchInput.scss';
-import {useSelector} from 'react-redux';
+import React, {ChangeEvent, useEffect} from 'react';
+import s from './searchInput.module.scss';
+import {useDispatch, useSelector} from 'react-redux';
 import {AppStateType} from '../../redux/store';
-import {useDebounce} from 'use-lodash-debounce';
-import _debounce from "lodash.debounce";
+import _debounce from 'lodash.debounce';
+import {searchRepositoriesTC} from '../../redux/SearchRepositoriesReducer';
 
 type PropsType = {
     searchValue: string
     setSearchValue: (s: string) => void
-    dispatchThunk: () => void
 }
 
-export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue, dispatchThunk}) => {
+export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue}) => {
 
     const error = useSelector<AppStateType, null | string>(state => state.searchRepositoriesPage?.setError)
 
@@ -19,35 +18,26 @@ export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue, d
             setSearchValue(e.currentTarget.value)
     }
 
-    const debouncedValue = useDebounce(searchValue, 1500)
+    const dispatch = useDispatch();
 
+    const dispatchThunk = () => {
+        dispatch(searchRepositoriesTC(searchValue))
 
-    // useEffect(() => {
-    //     dispatchThunk();
-    //   return () => {
-    //       dispatchThunk();
-    //   }
-    //
-    // }, [debouncedValue]);
+    }
 
-
-   // second variant to use debaunce
-    const delayedQuery = useCallback(_debounce(dispatchThunk, 500), [searchValue]);
-
-
+    const delayedQuery = _debounce(dispatchThunk, 1500);
 
      useEffect(() => {
          if (searchValue) {
              delayedQuery();
          }
         return delayedQuery.cancel;
-
      }, [searchValue, delayedQuery]);
 
     return (
-        <div>
-            <input value={searchValue} onChange={changeSearchValue} className={'searchInput'}  />
-            { error ? <div className={'error'}>{error}</div> : ' '  }
-        </div>
+        <>
+            <input value={searchValue} onChange={changeSearchValue} className={s.searchInput} type={'text'} />
+            { error ? <div className={s.error}>{error}</div> : ' '  }
+        </>
     )
 }

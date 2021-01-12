@@ -1,0 +1,12 @@
+@import "src/common/styles/styles";
+
+.cardList {
+  display: grid;
+  grid-column-gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  background-color: $BG_Color;
+  @media screen and (max-width: 640px) {
+      grid-template-columns: 1fr;
+  }
+}
+

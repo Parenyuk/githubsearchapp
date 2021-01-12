@@ -1,5 +1,5 @@
 import React from 'react';
-import '../CardList.scss'
+import s from './card.module.scss'
 
 type PropsType = {
     name: string
@@ -9,10 +9,10 @@ type PropsType = {
 
 export const Card: React.FC<PropsType> = ({name, language, description}) => {
     return (
-        <div   className='card'>
-            <div className='title'>{name}</div>
-            <div>Language: {language}</div>
-            <div>Description: {description}</div>
+        <div className={s.card}>
+            <h3 className={s.title}>{name}</h3>
+            <p>Language: {language}</p>
+            <p>Description: {description}</p>
         </div>
     )
 }

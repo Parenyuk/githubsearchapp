@@ -1,0 +1,14 @@
+@import "src/common/styles/styles";
+
+.content {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  padding-top: 10px;
+  @extend .wrapper
+}
+
+@media screen and (max-width: 640px) {
+  .content {
+    grid-template-columns: 100%;
+  }
+}

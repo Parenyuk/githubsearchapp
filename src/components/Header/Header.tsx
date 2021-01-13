@@ -7,7 +7,7 @@ export const Header = () => {
         <header className={s.header}>
             <div className={s.bottomLine}>
                 <a className={s.linkLogo} href={'/'}>
-                    <img src={logo} alt={'logo'} className={s.logo} />
+                    <img src={logo} alt={'logo'} className={s.logo}/>
                 </a>
                 <span className={s.title}>
                 Github users search app

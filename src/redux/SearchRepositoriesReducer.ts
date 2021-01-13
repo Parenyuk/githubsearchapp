@@ -54,8 +54,7 @@ export const searchRepositoriesTC = (searchValue: string): ThunkType => async (d
             const response = await githubApi.setSearchRepositories(searchValue);
             dispatch(actions.searchRepositoriesAC(response.data))
             dispatch(actions.setError(null))
-        }
-        else {
+        } else {
             dispatch(actions.setError(null))
         }
     } catch (e) {

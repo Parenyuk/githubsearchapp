@@ -3,11 +3,7 @@ import thunk from 'redux-thunk';
 import {loadState, saveState} from '../common/utils/localStorage';
 import {searchRepositoriesReducer} from './SearchRepositoriesReducer';
 
-
-
-
 export type InferActionTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U } ? U : never;
-
 
 const rootReducer = combineReducers(
     {

@@ -3,6 +3,7 @@
 .header {
   padding: 20px 40px 20px 20px;
   @extend .wrapper;
+
   .bottomLine {
     width: 100%;
     display: flex;
@@ -13,10 +14,12 @@
       flex-direction: column;
       justify-content: center;
     }
+
     .linkLogo {
       @media screen and (max-width: 640px) {
         margin-bottom: 8px;
       }
+
       .logo {
         @media screen and (max-width: 640px) {
           width: 55vw;
@@ -24,6 +27,7 @@
         }
       }
     }
+
     .title {
       color: $Title_Color;
       @media screen and (max-width: 640px) {

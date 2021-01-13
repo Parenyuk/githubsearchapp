@@ -15,7 +15,7 @@ export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue}) 
     const error = useSelector<AppStateType, null | string>(state => state.searchRepositoriesPage?.setError)
 
     const changeSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
-            setSearchValue(e.currentTarget.value)
+        setSearchValue(e.currentTarget.value)
     }
 
     const dispatch = useDispatch();
@@ -27,17 +27,17 @@ export const SearchInput: React.FC<PropsType> = ({searchValue, setSearchValue}) 
 
     const delayedQuery = _debounce(dispatchThunk, 1500);
 
-     useEffect(() => {
-         if (searchValue) {
-             delayedQuery();
-         }
+    useEffect(() => {
+        if (searchValue) {
+            delayedQuery();
+        }
         return delayedQuery.cancel;
-     }, [searchValue, delayedQuery]);
+    }, [searchValue, delayedQuery]);
 
     return (
         <>
-            <input value={searchValue} onChange={changeSearchValue} className={s.searchInput} type={'text'} />
-            { error ? <div className={s.error}>{error}</div> : ' '  }
+            <input value={searchValue} onChange={changeSearchValue} className={s.searchInput} type={'text'}/>
+            {error ? <div className={s.error}>{error}</div> : ' '}
         </>
     )
 }
